@@ -34,3 +34,10 @@ RUN git clone https://github.com/markdownlint/markdownlint.git \
 # install gometalinter containing misspell
 RUN go get -u github.com/alecthomas/gometalinter
 RUN gometalinter --install > /dev/null
+
+# install swagger
+ENV SWAGGER_VERSION=v0.17.1
+
+RUN wget --quiet -O /usr/local/bin/swagger \
+    "https://github.com/go-swagger/go-swagger/releases/download/${SWAGGER_VERSION}/swagger_linux_amd64"
+RUN chmod +x /usr/local/bin/swagger
