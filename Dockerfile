@@ -21,6 +21,10 @@ ENV ARCH=amd64
 RUN wget --quiet https://storage.googleapis.com/golang/go${GO_VERSION}.linux-${ARCH}.tar.gz \
     && tar -C /usr/local -xzf go${GO_VERSION}.linux-${ARCH}.tar.gz \
     && rm go${GO_VERSION}.linux-${ARCH}.tar.gz
+
+# create GOPATH
+RUN mkdir /go
+ENV GOPATH=/go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # install markdownlint
@@ -28,4 +32,5 @@ RUN git clone https://github.com/markdownlint/markdownlint.git \
     && cd markdownlint && git checkout v0.5.0 && rake install
 
 # install gometalinter containing misspell
-RUN go get -u github.com/alecthomas/gometalinter && gometalinter --install > /dev/null
+RUN go get -u github.com/alecthomas/gometalinter
+RUN gometalinter --install > /dev/null
