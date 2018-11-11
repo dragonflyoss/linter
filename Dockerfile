@@ -31,6 +31,9 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN git clone https://github.com/markdownlint/markdownlint.git \
     && cd markdownlint && git checkout v0.5.0 && rake install
 
+# install markdown-link-check from https://github.com/tcort/markdown-link-check
+RUN npm install -g markdown-link-check
+
 # install gometalinter containing misspell
 RUN go get -u github.com/alecthomas/gometalinter
 RUN gometalinter --install > /dev/null
