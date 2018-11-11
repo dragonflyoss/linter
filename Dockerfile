@@ -8,7 +8,7 @@ FROM ubuntu:16.04
 
 # shellcheck is included in this installation command.
 RUN apt-get update \
-    && apt-get install -y rubygems git curl wget shellcheck \
+    && apt-get install -y rubygems git curl wget shellcheck npm\
     && gem install rake \
     && gem install bundler \
     && apt-get clean   
