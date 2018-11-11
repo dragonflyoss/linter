@@ -6,9 +6,14 @@
 # gometalinter
 FROM ubuntu:16.04
 
+# update node source for apt
+RUN apt-get update && apt-get install -y curl && apt-get clean 
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - 
+
 # shellcheck is included in this installation command.
 RUN apt-get update \
-    && apt-get install -y rubygems git curl wget shellcheck npm\
+    && apt-get install -y rubygems git curl wget shellcheck nodejs \
     && gem install rake \
     && gem install bundler \
     && apt-get clean   
