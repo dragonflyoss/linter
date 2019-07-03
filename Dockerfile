@@ -21,7 +21,7 @@ RUN apt-get update \
 # install golang
 # set go binary path to local $PATH
 # go binary path is /usr/local/go/bin
-ENV GO_VERSION=1.10.4
+ENV GO_VERSION=1.12.6
 ENV ARCH=amd64
 RUN wget --quiet https://storage.googleapis.com/golang/go${GO_VERSION}.linux-${ARCH}.tar.gz \
     && tar -C /usr/local -xzf go${GO_VERSION}.linux-${ARCH}.tar.gz \
