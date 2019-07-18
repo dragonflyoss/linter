@@ -1,9 +1,8 @@
 # This Dockerfile is used to build an image which is used in circle CI
 # to run the the following check or validation:
 # markdownlint
-# misspell
 # ShellCheck
-# gometalinter
+# golangci-lint
 FROM ubuntu:16.04
 
 # update node source for apt
@@ -13,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 # shellcheck is included in this installation command.
 RUN apt-get update \
-    && apt-get install -y rubygems git curl wget shellcheck nodejs make \
+    && apt-get install -y rubygems git curl wget shellcheck nodejs make gcc\
     && gem install rake \
     && gem install bundler \
     && apt-get clean   
@@ -39,9 +38,9 @@ RUN git clone https://github.com/markdownlint/markdownlint.git \
 # install markdown-link-check from https://github.com/tcort/markdown-link-check
 RUN npm install -g markdown-link-check
 
-# install gometalinter containing misspell
-RUN go get -u github.com/alecthomas/gometalinter
-RUN gometalinter --install > /dev/null
+# install golangci-lint
+ENV GOLANGCILINT_VERSION=v1.17.1
+RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin ${GOLANGCILINT_VERSION}
 
 # install swagger
 ENV SWAGGER_VERSION=v0.19.0
