@@ -1,5 +1,7 @@
 # pouchlinter
 
+![Docker Pulls](https://img.shields.io/docker/pulls/pouchcontainer/pouchlinter.svg)
+
 pouchlinter is a very useful linter tool used in all pouch-related open source golang repositories.
 
 Any project can use pouchlinter to linter code and document.
