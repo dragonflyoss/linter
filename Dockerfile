@@ -48,3 +48,6 @@ ENV SWAGGER_VERSION=v0.19.0
 RUN wget --quiet -O /usr/local/bin/swagger \
     "https://github.com/go-swagger/go-swagger/releases/download/${SWAGGER_VERSION}/swagger_linux_amd64"
 RUN chmod +x /usr/local/bin/swagger
+
+# install misspell
+RUN curl -L https://git.io/misspell | bash
