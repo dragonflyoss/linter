@@ -8,3 +8,4 @@
 - Add [markdown-link-check](https://github.com/tcort/markdown-link-check) tool to check if links in markdown file is available;
 - Add [gometalinter](https://github.com/alecthomas/gometalinter) to validate golang code;
 - Add [go-swagger](https://github.com/go-swagger/go-swagger) to validate swagger yml for API;
+- Add [yamllint](https://github.com/adrienverge/yamllint) to validate yaml file;
