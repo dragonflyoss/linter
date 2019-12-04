@@ -12,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 # shellcheck is included in this installation command.
 RUN apt-get update \
-    && apt-get install -y rubygems git curl wget shellcheck nodejs make gcc\
+    && apt-get install -y rubygems git curl wget shellcheck nodejs make gcc python-pip \
     && gem install rake \
     && gem install bundler \
     && apt-get clean   
@@ -51,3 +51,6 @@ RUN chmod +x /usr/local/bin/swagger
 
 # install misspell
 RUN curl -L https://git.io/misspell | bash
+
+# install yamllint
+RUN pip install --user yamllint && mv /root/.local/bin/yamllint /usr/bin
